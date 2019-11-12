@@ -38,7 +38,7 @@ connection.onstream = function(event){
 
 let roomid = document.getElementById('txt-roomid');
 
-roomid.value = connection.token();
+// roomid.value = connection.token();
 
 let flag = false;
 

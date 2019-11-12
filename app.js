@@ -18,7 +18,7 @@ let roomID;
 let ROOM = [];
 app.get('/room/:roomId', function(req, res){
   roomID = req.params.roomId;
-  console.log("roomID 나오나? "+ROOM[roomID]);
+  console.log(roomID+"roomID 나오나? "+ROOM[roomID]);
   if(ROOM[roomID] === undefined){
     ROOM[roomID] = true;
     res.send(true)
