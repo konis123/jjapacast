@@ -92,30 +92,39 @@
                         rotateInCircle(htmlElement);
                     },
                     onRoomFound: function(room) {
-                        var alreadyExist = document.querySelector('button[data-broadcaster="' + room.broadcaster + '"]');
-                        if (alreadyExist) return;
+                        this.disabled = true;
+                        var broadcaster = this.getAttribute('data-broadcaster');
+                        var roomToken = this.getAttribute('data-roomToken');
+                        broadcastUI.joinRoom({
+                            roomToken: roomToken,
+                            joinUser: broadcaster
+                        });
+                        hideUnnecessaryStuff();
+                        
+                        // var alreadyExist = document.querySelector('button[data-broadcaster="' + room.broadcaster + '"]');
+                        // if (alreadyExist) return;
 
-                        if (typeof roomsList === 'undefined') roomsList = document.body;
+                        // if (typeof roomsList === 'undefined') roomsList = document.body;
 
-                        var tr = document.createElement('tr');
-                        tr.innerHTML = '<td><strong>' + room.roomName + '</strong> is broadcasting his media!</td>' +
-                            '<td><button class="join">Join</button></td>';
-                        roomsList.appendChild(tr);
+                        // var tr = document.createElement('tr');
+                        // tr.innerHTML = '<td><strong>' + room.roomName + '</strong> is broadcasting his media!</td>' +
+                        //     '<td><button class="join">Join</button></td>';
+                        // roomsList.appendChild(tr);
 
-                        var joinRoomButton = tr.querySelector('.join');
-                        joinRoomButton.setAttribute('data-broadcaster', room.broadcaster);
-                        joinRoomButton.setAttribute('data-roomToken', room.broadcaster);
-                        joinRoomButton.onclick = function() {
-                            this.disabled = true;
+                        // var joinRoomButton = tr.querySelector('.join');
+                        // joinRoomButton.setAttribute('data-broadcaster', room.broadcaster);
+                        // joinRoomButton.setAttribute('data-roomToken', room.broadcaster);
+                        // joinRoomButton.onclick = function() {
+                        //     this.disabled = true;
 
-                            var broadcaster = this.getAttribute('data-broadcaster');
-                            var roomToken = this.getAttribute('data-roomToken');
-                            broadcastUI.joinRoom({
-                                roomToken: roomToken,
-                                joinUser: broadcaster
-                            });
-                            hideUnnecessaryStuff();
-                        };
+                        //     var broadcaster = this.getAttribute('data-broadcaster');
+                        //     var roomToken = this.getAttribute('data-roomToken');
+                        //     broadcastUI.joinRoom({
+                        //         roomToken: roomToken,
+                        //         joinUser: broadcaster
+                        //     });
+                        //     hideUnnecessaryStuff();
+                        // };
                     },
                     onNewParticipant: function(numberOfViewers) {
                         document.title = 'Viewers: ' + numberOfViewers;
