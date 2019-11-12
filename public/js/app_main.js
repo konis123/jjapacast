@@ -98,7 +98,7 @@ function captureUserMedia(callback) {
         alert('DetectRTC library is unable to find webcam; maybe you denied webcam access once and it is still denied or maybe webcam device is not attached to your system or another app is using same webcam.');
     }
 
-    var htmlElement = document.createElement(option === 'video');
+    var htmlElement = document.createElement(option === 'Only Audio' ? 'audio' : 'video');
 
     htmlElement.muted = true;
     htmlElement.volume = 0;
