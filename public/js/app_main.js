@@ -1,5 +1,4 @@
 let recorder;
-let remoteStream;
 
 var config = {
     openSocket: function(config) {
@@ -173,12 +172,12 @@ function rotateInCircle(video) {
 var saveBtn = document.getElementById('start');
 saveBtn.addEventListener("click", ()=>{
     console.log('start click');
-    // stream = remoteStream;
-    // console.log(stream)
-    // recorder = new RecordRTC(stream, {
-        // type: 'video',
-        // mimeType: 'video/webm',
-    // });
+    stream = remoteStream;
+    console.log(stream)
+    recorder = new RecordRTC(stream, {
+        type: 'video',
+        mimeType: 'video/webm',
+    });
     recorder.startRecording();
     // recorder.camera = stream;
     

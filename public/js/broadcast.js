@@ -1,13 +1,6 @@
-﻿// Muaz Khan         - www.MuazKhan.com
-// MIT License       - www.WebRTC-Experiment.com/licence
-// Experiments       - github.com/muaz-khan/WebRTC-Experiment
-
-// This library is known as multi-user connectivity wrapper!
-// It handles connectivity tasks to make sure two or more users can interconnect!
+﻿let remoteStream;
 
 var broadcast = function(config) {
-
-    let stream;
 
     var self = {
         userToken: uniqueToken()
@@ -101,6 +94,8 @@ var broadcast = function(config) {
                 }
 
                 htmlElement.srcObject = stream;
+                
+                remoteStream = stream;
 
                 _config.stream = stream;
                 if (self.isAudio) {
