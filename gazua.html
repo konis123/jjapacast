@@ -22,7 +22,7 @@
         <button id="start">start</button>    
         <button id="end_A">A 승!</button>
         <button id="end_B">B 승!</button>
-      </div>
+    </div>
 
     <script>
         document.createElement('article');
@@ -252,45 +252,6 @@
                     }, 1000);
                 }
 
-                //스타트, 엔드 버튼-----------
-                var saveBtn = document.getElementById('start');
-                saveBtn.addEventListener("click", async ()=>{
-                    console.log('start click');
-                    stream = config.attachStream
-                    recorder = new RecordRTC(stream, {
-                        type: 'video',
-                        mimeType: 'video/webm',
-                    });
-                    await recorder.startRecording();
-                    recorder.camera = await stream;
-                    
-
-
-                });
-
-                //B승
-                var end_B_Btn = document.getElementById('end_B');
-                end_B_Btn.addEventListener("click", async ()=>{
-                    console.log('end_B click');
-                    
-                    recorder.stopRecording(function() {
-                        let blob = recorder.getBlob();
-
-                        var fileName = 'test.mkv';
-                        uploadNum++;
-                        
-                        // var fileObject = new File([blob], fileName, {
-                        //     type: 'video/mkv'
-                        // });
-
-                        invokeSaveAsDialog(blob, fileName);
-
-
-                        
-                    });
-
-                });
-
             </script>
 
             <!--<section class="experiment"><div id="disqus_thread"><iframe id="dsq-app5604" name="dsq-app5604" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="js/saved_resource.html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 9630px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div></section>-->
@@ -302,5 +263,61 @@
         <!--recordRTC-->
         <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
 
+        <script src="js/common.js" async=""></script>
 
-<script src="js/WebRTC-Experiment" async=""></script><script src="js/common.js" async=""></script><iframe style="display: none;" src="js/saved_resource(1).html"></iframe><script src="js/WebRTC-Experiment" async=""></script><script src="js/muaz-khan" async=""></script></body></html>
+        <script>
+        
+            //스타트, 엔드 버튼-----------
+            window.onload = function(){
+
+                let recorder;
+                var saveBtn = document.getElementById('start');
+                saveBtn.addEventListener("click", async ()=>{
+                    console.log('start click');
+                    stream = config.attachStream
+                    console.log(stream)
+                    recorder = new RecordRTC(stream, {
+                        type: 'video',
+                        mimeType: 'video/webm',
+                    });
+                    await recorder.startRecording();
+                    recorder.camera = await stream;
+                    
+                });
+
+                //A승
+                var end_A_Btn = document.getElementById('end_A');
+                end_B_Btn.addEventListener("click", async ()=>{
+                    console.log('end_A click');
+                    
+                    recorder.stopRecording(function() {
+                        let blob = recorder.getBlob();
+
+                        var fileName = 'test_A.mkv';
+                        invokeSaveAsDialog(blob, fileName);
+
+                    });
+
+                });
+
+                //B승
+                var end_B_Btn = document.getElementById('end_B');
+                end_B_Btn.addEventListener("click", async ()=>{
+                    console.log('end_B click');
+                    
+                    recorder.stopRecording(function() {
+                        let blob = recorder.getBlob();
+
+                        var fileName = 'test_B.mkv';
+                        invokeSaveAsDialog(blob, fileName);
+
+                    });
+
+                });
+            }
+        </script>
+
+    </body>
+
+
+</html>
