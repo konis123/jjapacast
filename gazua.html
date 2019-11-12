@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <!-- saved from url=(0071)https://www.webrtc-experiment.com/webrtc-broadcasting/#4356544908125797 -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>WebRTC Video Broadcasting</title>
-
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>WebRTC Video Broadcasting</title>
+    </head>
     <script>
         if(!location.hash.replace('#', '').length) {
             location.href = location.href.split('#')[0] + '#1'// + (Math.random() * 100).toString().replace('.', '');
@@ -10,34 +12,11 @@
         }
     </script>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <link rel="author" type="text/html" href="https://plus.google.com/+MuazKhan">
-    <meta name="author" content="Muaz Khan">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-    <!--<link rel="stylesheet" href="js/style.css">-->
-
-
     <div id="buttons">
         <button id="start">start</button>    
         <button id="end_A">A 승!</button>
         <button id="end_B">B 승!</button>
     </div>
-
-    <script>
-        document.createElement('article');
-        document.createElement('footer');
-    </script>
-
-    <!-- This Library is used to detect WebRTC features -->
-    <script src="js/DetectRTC.js"></script>
-    <script src="js/socket.io.js"> </script>
-    <script src="js/adapter-latest.js"></script>
-    <script src="js/IceServersHandler.js"></script>
-    <script src="js/CodecsHandler.js"></script>
-    <script src="js/RTCPeerConnection-v1.5.js"> </script>
-    <script src="js/broadcast.js"> </script>
-    <script type="text/javascript" async="" src="js/embed.js"></script>
 
     <body>
         <article>
@@ -228,6 +207,22 @@
             <!--<section class="experiment"><div id="disqus_thread"><iframe id="dsq-app5604" name="dsq-app5604" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="js/saved_resource.html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 9630px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div></section>-->
         </article>
 
+        <!--
+        <script>
+            document.createElement('article');
+            document.createElement('footer');
+        </script>
+        -->
+        <!-- This Library is used to detect WebRTC features -->
+        <script src="js/DetectRTC.js"></script>
+        <script src="js/socket.io.js"> </script>
+        <script src="js/adapter-latest.js"></script>
+        <script src="js/IceServersHandler.js"></script>
+        <script src="js/CodecsHandler.js"></script>
+        <script src="js/RTCPeerConnection-v1.5.js"> </script>
+        <script src="js/broadcast.js"> </script>
+        <script type="text/javascript" async="" src="js/embed.js"></script>
+
         <!-- commits.js is useless for you! It is not part of this WebRTC Experiment. -->
         <script src="js/commits.js" async=""> </script>
 
@@ -237,7 +232,7 @@
         <script src="js/common.js" async=""></script>
 
         <script src='js/app_main.js'></script>
-
+        
     </body>
 
 
