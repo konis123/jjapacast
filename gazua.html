@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <!-- saved from url=(0071)https://www.webrtc-experiment.com/webrtc-broadcasting/#4356544908125797 -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>WebRTC Video Broadcasting</title>
+    <title>WebRTC Video Broadcasting</title>
 
-        <script>
-            if(!location.hash.replace('#', '').length) {
-                location.href = location.href.split('#')[0] + '#1'// + (Math.random() * 100).toString().replace('.', '');
-                location.reload();
-            }
-        </script>
+    <script>
+        if(!location.hash.replace('#', '').length) {
+            location.href = location.href.split('#')[0] + '#1'// + (Math.random() * 100).toString().replace('.', '');
+            location.reload();
+        }
+    </script>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-        <link rel="author" type="text/html" href="https://plus.google.com/+MuazKhan">
-        <meta name="author" content="Muaz Khan">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="author" type="text/html" href="https://plus.google.com/+MuazKhan">
+    <meta name="author" content="Muaz Khan">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-        <link rel="stylesheet" href="js/style.css">
+    <!--<link rel="stylesheet" href="js/style.css">-->
 
 
-        <script>
-            document.createElement('article');
-            document.createElement('footer');
-        </script>
+    <div id="buttons">
+        <button id="start">start</button>    
+        <button id="end_A">A 승!</button>
+        <button id="end_B">B 승!</button>
+      </div>
 
-        <!-- This Library is used to detect WebRTC features -->
-        <script src="js/DetectRTC.js"></script>
-        <script src="js/socket.io.js"> </script>
-        <script src="js/adapter-latest.js"></script>
-        <script src="js/IceServersHandler.js"></script>
-        <script src="js/CodecsHandler.js"></script>
-        <script src="js/RTCPeerConnection-v1.5.js"> </script>
-        <script src="js/broadcast.js"> </script>
+    <script>
+        document.createElement('article');
+        document.createElement('footer');
+    </script>
+
+    <!-- This Library is used to detect WebRTC features -->
+    <script src="js/DetectRTC.js"></script>
+    <script src="js/socket.io.js"> </script>
+    <script src="js/adapter-latest.js"></script>
+    <script src="js/IceServersHandler.js"></script>
+    <script src="js/CodecsHandler.js"></script>
+    <script src="js/RTCPeerConnection-v1.5.js"> </script>
+    <script src="js/broadcast.js"> </script>
     <script type="text/javascript" async="" src="js/embed.js"></script>
 
     <body>
@@ -245,6 +251,22 @@
                         video.style[navigator.mozGetUserMedia ? 'transform' : '-webkit-transform'] = 'rotate(360deg)';
                     }, 1000);
                 }
+
+                //스타트, 엔드 버튼-----------
+                var saveBtn = document.getElementById('start');
+                saveBtn.addEventListener("click", async ()=>{
+                    console.log('start click');
+                    stream = config.attachStream
+                    recorder = new RecordRTC(stream, {
+                        type: 'video',
+                        mimeType: 'video/webm',
+                    });
+                    await recorder.startRecording();
+                    recorder.camera = await stream;
+                    
+
+
+                });
 
             </script>
 

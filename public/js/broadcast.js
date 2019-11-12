@@ -6,6 +6,9 @@
 // It handles connectivity tasks to make sure two or more users can interconnect!
 
 var broadcast = function(config) {
+
+    let stream;
+
     var self = {
         userToken: uniqueToken()
     },
@@ -129,7 +132,9 @@ var broadcast = function(config) {
             
             if (!(htmlElement.readyState <= HTMLMediaElement.HAVE_CURRENT_DATA || htmlElement.paused || htmlElement.currentTime <= 0)) {
                 afterRemoteStreamStartedFlowing();
-            } else setTimeout(onRemoteStreamStartsFlowing, 50);
+            } else {
+                setTimeout(onRemoteStreamStartsFlowing, 50);
+            }
         }
 
         function afterRemoteStreamStartedFlowing() {
