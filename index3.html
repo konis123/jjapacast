@@ -5,12 +5,10 @@
 
         <script>
             if(!location.hash.replace('#', '').length) {
-                location.href = location.href.split('#')[0] + '#' + (Math.random() * 100).toString().replace('.', '');
+                location.href = location.href.split('#')[0] + '#1'// + (Math.random() * 100).toString().replace('.', '');
                 location.reload();
             }
         </script>
-
-
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <link rel="author" type="text/html" href="https://plus.google.com/+MuazKhan">
@@ -27,7 +25,6 @@
 
         <!-- This Library is used to detect WebRTC features -->
         <script src="js/DetectRTC.js"></script>
-
         <script src="js/socket.io.js"> </script>
         <script src="js/adapter-latest.js"></script>
         <script src="js/IceServersHandler.js"></script>
@@ -38,7 +35,6 @@
 
     <body>
         <article>
-
 
             <!-- copy this <section> and next <script> -->
             <section class="experiment">
@@ -251,20 +247,8 @@
 
             </script>
 
-            <section class="experiment">
-                <h2 class="header">How it works?</h2>
-                <ol>
-                    <li>It broadcasts media in one-way direction over number of peers.</li>
-                    <li>All peers can view/watch/listen the broadcast, anonymously.</li>
-                    <li>"Anonymously" means viewers will NEVER be prompted to allow webcam or mic or screen.</li>
-                    <li>Assume like a radio station inside the browser. Remember, it works only browser-to-browser.</li>
-                </ol>
-            </section>
-
             <section class="experiment"><div id="disqus_thread"><iframe id="dsq-app5604" name="dsq-app5604" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="js/saved_resource.html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 9630px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div></section>
         </article>
-
-
 
         <!-- commits.js is useless for you! It is not part of this WebRTC Experiment. -->
         <script src="js/commits.js" async=""> </script>
