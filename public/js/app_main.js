@@ -73,13 +73,13 @@ function setupNewBroadcastButtonClickHandler() {
 
     DetectRTC.load(function() {
         captureUserMedia(function() {
-            var shared = 'video';
-            if (window.option == 'Only Audio') {
-                shared = 'audio';
-            }
-            if (window.option == 'Screen') {
-                shared = 'screen';
-            }
+            // var shared = 'video';
+            // if (window.option == 'Only Audio') {
+            //     shared = 'audio';
+            // }
+            // if (window.option == 'Screen') {
+            //     shared = 'screen';
+            // }
 
             broadcastUI.createRoom({
                 roomName: (document.getElementById('broadcast-name') || { }).value || 'Anonymous',
@@ -98,7 +98,7 @@ function captureUserMedia(callback) {
         alert('DetectRTC library is unable to find webcam; maybe you denied webcam access once and it is still denied or maybe webcam device is not attached to your system or another app is using same webcam.');
     }
 
-    var htmlElement = document.createElement(option === 'Only Audio' ? 'audio' : 'video');
+    var htmlElement = document.createElement(option === 'video');
 
     htmlElement.muted = true;
     htmlElement.volume = 0;
@@ -117,11 +117,12 @@ function captureUserMedia(callback) {
         video: htmlElement,
         onsuccess: function(stream) {
             config.attachStream = stream;
-            recorder = RecordRTC(stream, {
-                type: 'video',
-                mimeType: 'video/webm',
-            });
-            console.log(stream)
+            //이건 자기자신 스트림임.
+            // recorder = RecordRTC(stream, {
+            //     type: 'video',
+            //     mimeType: 'video/webm',
+            // });
+            // console.log(stream)
             videosContainer.appendChild(htmlElement);
             rotateInCircle(htmlElement);
 
