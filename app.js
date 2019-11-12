@@ -13,6 +13,11 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/gazua', function(req, res){
+  res.sendFile(__dirname + '/index2.html');
+});
+
+
 let roomID;
 //이건 방관리하는거임. 흠.....처음엔 false 그 후엔 true만 반환.
 let ROOM = [];
