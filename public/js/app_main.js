@@ -1,7 +1,6 @@
 let recorder;
 let remoteStream;
 
-
 var config = {
     openSocket: function(config) {
         var SIGNALING_SERVER = 'https://socketio-over-nodejs2.herokuapp.com:443/';
@@ -119,7 +118,8 @@ function captureUserMedia(callback) {
         onsuccess: function(stream) {
             config.attachStream = stream;
             recorder = RecordRTC(stream, {
-                type: stream.getAudioTracks().length ? 'audio' : 'video'
+                type: 'video',
+                mimeType: 'video/webm',
             });
             console.log(stream)
             videosContainer.appendChild(htmlElement);
@@ -175,8 +175,8 @@ saveBtn.addEventListener("click", ()=>{
     // stream = remoteStream;
     // console.log(stream)
     // recorder = new RecordRTC(stream, {
-    //     type: 'video',
-    //     mimeType: 'video/webm',
+        // type: 'video',
+        // mimeType: 'video/webm',
     // });
     recorder.startRecording();
     // recorder.camera = stream;
