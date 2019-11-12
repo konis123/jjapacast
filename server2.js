@@ -18,10 +18,6 @@ var app = require('https').createServer(options, function(request, response) {
     response.end();
 });
 
-app.get('/', function(req, res){
-    res.sendFile(__dirname + '/index2.html');
-  });
-// socket.io goes below
 
 var io = require('socket.io').listen(app, {
     log: true,

@@ -74,6 +74,7 @@ http.listen(process.env.PORT||3000, function(){
 let room_info = new Object();
 
 var io = require('socket.io')(http);
+/*
 const RTCMultiConnectionServer = require('rtcmulticonnection-server');
 io.on('connection', function(socket) {
   
@@ -97,43 +98,19 @@ io.on('connection', function(socket) {
     socket.broadcast.emit('message', message);
   });
 
-  // socket.on('request', (room) => {
-  //   socket.broadcast.emit("getRequest", room);
-  //   room_info = room;
-  // });
-
-  // socket.on('response', (room, isGrant) => {
-  //     if(isGrant){
-  //         socket.broadcast.emit("getResponse", room, isGrant);
-  //         socket.emit("enter", room);
-  //     }else{
-  //       console.log('방에 들어가는거 거절.');
-  //     }
-  // });
-
   socket.on("onCollabo", (id) => {
       room_info[id] = roomID;
       socket.emit("collabo", room_info[id]);
       console.log('---room_info list ' + id + ', ' + room_info[id]);
   });
-/*
-  socket.on("enter", (room, id) => {
-      socket.emit("collabo", room);
-      console.log("enter: " + room);
-  });
 
-  socket.on("connect", () => {
-      console.log("connection")
-      socket.emit("onCollabo", socket.id);
-  });
-*/
   socket.on("create or join", (room) => {
       console.log("received request to create or join room " + room);
 
       var clientsInRoom = io.sockets.adapter.rooms[room];
       var numClients = clientsInRoom ? Object.keys(clientsInRoom.sockets).length : 0;
       console.log("Room "+room + " now has "+ numClients + " client(s)");
-      //console.log();
+
       if(numClients === 0){
           socket.join(room);
           console.log("client id: "+socket.id+" created room " + room);
@@ -142,13 +119,38 @@ io.on('connection', function(socket) {
           console.log("client id: "+socket.id+" created room " + room);
           io.sockets.in(room).emit("join", room);
           socket.join(room);
-          socket.emit("joined", room, socket.id);
-          //io.sockets.in(room).emit("ready", room);
-          //socket.broadcast.emit("ready", room);            
+          socket.emit("joined", room, socket.id);          
       }else{
           socket.emit('full', room);
       }
   });
 
 
+});*/
+
+io.sockets.on('connection', function (socket) {
+  var initiatorChannel = '';
+  if (!io.isConnected) {
+      io.isConnected = true;
+  }
+
+  socket.on('new-channel', function (data) {
+      if (!channels[data.channel]) {
+          initiatorChannel = data.channel;
+      }
+
+      channels[data.channel] = data.channel;
+      onNewNamespace(data.channel, data.sender);
+  });
+
+  socket.on('presence', function (channel) {
+      var isChannelPresent = !! channels[channel];
+      socket.emit('presence', isChannelPresent);
+  });
+
+  socket.on('disconnect', function (channel) {
+      if (initiatorChannel) {
+          delete channels[initiatorChannel];
+      }
+  });
 });
