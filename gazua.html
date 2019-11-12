@@ -91,8 +91,8 @@
                     },
                     onRoomFound: function(room) {
                         broadcastUI.joinRoom({
-                            roomToken: roomToken,
-                            joinUser: broadcaster
+                            roomToken: room.broadcaster,
+                            joinUser: room.broadcaster
                         });
                         // var alreadyExist = document.querySelector('button[data-broadcaster="' + room.broadcaster + '"]');
                         // if (alreadyExist) return;
