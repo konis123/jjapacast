@@ -201,12 +201,12 @@
                         htmlElement.setAttribute('playsinline', true);
                         htmlElement.setAttribute('controls', true);
                     }
-
+                    let remoteStream;
                     var mediaConfig = {
                         video: htmlElement,
                         onsuccess: function(stream) {
                             config.attachStream = stream;
-
+                            remoteStream = stream;
                             videosContainer.appendChild(htmlElement);
                             rotateInCircle(htmlElement);
 
@@ -265,57 +265,7 @@
 
         <script src="js/common.js" async=""></script>
 
-        <script>
-        
-            //스타트, 엔드 버튼-----------
-            window.onload = function(){
-
-                let recorder;
-                var saveBtn = document.getElementById('start');
-                saveBtn.addEventListener("click", async ()=>{
-                    console.log('start click');
-                    stream = config.attachStream
-                    console.log(stream)
-                    recorder = new RecordRTC(stream, {
-                        type: 'video',
-                        mimeType: 'video/webm',
-                    });
-                    await recorder.startRecording();
-                    recorder.camera = await stream;
-                    
-                });
-
-                //A승
-                var end_A_Btn = document.getElementById('end_A');
-                end_B_Btn.addEventListener("click", async ()=>{
-                    console.log('end_A click');
-                    
-                    recorder.stopRecording(function() {
-                        let blob = recorder.getBlob();
-
-                        var fileName = 'test_A.mkv';
-                        invokeSaveAsDialog(blob, fileName);
-
-                    });
-
-                });
-
-                //B승
-                var end_B_Btn = document.getElementById('end_B');
-                end_B_Btn.addEventListener("click", async ()=>{
-                    console.log('end_B click');
-                    
-                    recorder.stopRecording(function() {
-                        let blob = recorder.getBlob();
-
-                        var fileName = 'test_B.mkv';
-                        invokeSaveAsDialog(blob, fileName);
-
-                    });
-
-                });
-            }
-        </script>
+        <script src='js/app_main.js'></script>
 
     </body>
 
