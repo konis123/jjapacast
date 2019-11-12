@@ -73,7 +73,7 @@ function setupNewBroadcastButtonClickHandler() {
 
     DetectRTC.load(function() {
         captureUserMedia(function() {
-            // var shared = 'video';
+             var shared = 'video';
             // if (window.option == 'Only Audio') {
             //     shared = 'audio';
             // }
