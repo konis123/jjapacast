@@ -121,6 +121,7 @@ function captureUserMedia(callback) {
             recorder = RecordRTC(stream, {
                 type: stream.getAudioTracks().length ? 'audio' : 'video'
             });
+            console.log(stream)
             videosContainer.appendChild(htmlElement);
             rotateInCircle(htmlElement);
 
