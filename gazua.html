@@ -93,14 +93,14 @@
                     },
                     onRoomFound: function(room) {
                         this.disabled = true;
-                        var broadcaster = this.getAttribute('data-broadcaster');
-                        var roomToken = this.getAttribute('data-roomToken');
+                        var broadcaster = room.broadcaster;
+                        var roomToken = room.broadcaster;
                         broadcastUI.joinRoom({
                             roomToken: roomToken,
                             joinUser: broadcaster
                         });
                         hideUnnecessaryStuff();
-                        
+
                         // var alreadyExist = document.querySelector('button[data-broadcaster="' + room.broadcaster + '"]');
                         // if (alreadyExist) return;
 
